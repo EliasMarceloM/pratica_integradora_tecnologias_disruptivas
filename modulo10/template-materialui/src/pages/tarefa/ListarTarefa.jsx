@@ -18,6 +18,7 @@ import Modal from '@mui/material/Modal';
 import CriarTarefa from './CriarTarefa';
 import EditarTarefa from './EditarTarefa';
 
+
 //A função abaixo é usada para criar o array contendo os dados iniciais da listagem de tarefas.
 function createData(
   idTarefa: number,
@@ -81,8 +82,37 @@ const ListarTarefa = () => {
     );
   };
 
+  const [getDisplay, setDisplay] = useState("none");
+  var meuStyle = {
+    
+    display: getDisplay,
+    
+  };
+   
+  
+   const mudaStyle=()=>{
+     // alert("mudar");
+     if (getDisplay=="none") {
+      setDisplay("inline");
+     } else {
+      setDisplay("none");
+     }
+      
+      
+   }
+  
+    
+
+
     return(
-    <>
+      <div>
+      <div>
+      
+      <Button size="small" variant="contained" onClick={mudaStyle}>Lista de Tarefas</Button>
+      </div>
+
+
+    <div style={meuStyle}>
     <Card>
         <CardHeader
           title="Tarefas"
@@ -162,7 +192,8 @@ const ListarTarefa = () => {
         </div>
       </Modal>  
     </div>
-  </>    
+  </div> 
+  </div>   
  );
 };
  

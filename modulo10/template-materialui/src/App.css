@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  text-align: center;
+  background-color: #414c61;
+  color: white;
+  padding: 40px;
+  font-family: Sans-Serif;
+
+  
+}
