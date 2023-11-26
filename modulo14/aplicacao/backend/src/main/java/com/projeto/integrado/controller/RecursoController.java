@@ -1,6 +1,7 @@
 package com.projeto.integrado.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,19 @@ import com.projeto.integrado.service.RecursoService;
 public class RecursoController {
 	@Autowired
 	RecursoService recursoService;
+	
+	//---
+	public ResponseEntity<?> buscarPorNomeDoRecurso(@PathVariable String nome) {
+	    Optional<Recurso> recurso = recursoService.getByRecursoNome(nome);
+        if (recurso.isPresent()) {
+            return ResponseEntity.ok(recurso.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+	}
+	
+	
+	//---
 	
 	@GetMapping
 	public ResponseEntity<List<Recurso>> getAll(){

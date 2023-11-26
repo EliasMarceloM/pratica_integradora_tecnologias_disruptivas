@@ -5,7 +5,7 @@ services:
     image: 'docker-spring-boot:latest'
     container_name: backend
     build:
-      context: ../descomplica
+      context: .
       dockerfile: ./dockerfiles/Dockerfile.Spring.Boot
     tty: true  
     depends_on:
@@ -47,7 +47,7 @@ services:
   frontend:
     container_name: frontend
     build:
-      context: ../descomplica
+      context: .
       dockerfile: ./dockerfiles/Dockerfile.React
     ports: 
       - "13000:3000"

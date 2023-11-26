@@ -1,6 +1,8 @@
 package com.projeto.integrado.service;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.projeto.integrado.entity.Projeto;
@@ -14,7 +16,12 @@ public class ProjetoService {
 	public List<Projeto> getAll(){
 		return projetoRepository.findAll();
 	}
-	
+	//---
+    public Optional<Projeto> getByDescricao(String descricao) {
+        return projetoRepository.findByProjetoDescricao(descricao);
+    }
+
+	//---
 	public Projeto getById(Integer id) {
 		return projetoRepository.findById(id).orElse(null) ;
 	}

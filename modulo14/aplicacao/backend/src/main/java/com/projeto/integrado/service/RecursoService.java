@@ -1,6 +1,8 @@
 package com.projeto.integrado.service;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.projeto.integrado.entity.Recurso;
@@ -10,7 +12,13 @@ import com.projeto.integrado.repository.RecursoRepository;
 public class RecursoService {
 	@Autowired
 	RecursoRepository recursoRepository;
-	
+	//---
+	 public Optional<Recurso> getByRecursoNome(String recursoNome) {
+		  
+	        return recursoRepository.findByRecursoNome(recursoNome);
+	    }
+
+	//---
 	public List<Recurso> getAll(){
 		return recursoRepository.findAll();
 	}

@@ -26,8 +26,8 @@ public class Projeto {
 	private String projetoNome;
 
 	@Column(name = "projeto_descricao")
-	private String projetoDescricao;
-
+	private String projetoDescricao; // projeto descrição deve ir para respoistory
+		
 	@Column(name = "projeto_inicio")
 	private Instant projetoInicio;
 

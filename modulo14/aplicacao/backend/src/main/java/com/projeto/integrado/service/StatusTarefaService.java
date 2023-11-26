@@ -10,7 +10,7 @@ import com.projeto.integrado.repository.StatusTarefaRepository;
 public class StatusTarefaService {
 	@Autowired
 	StatusTarefaRepository statusTarefaRepository;
-	
+
 	public List<StatusTarefa> getAll(){
 		return statusTarefaRepository.findAll();
 	}

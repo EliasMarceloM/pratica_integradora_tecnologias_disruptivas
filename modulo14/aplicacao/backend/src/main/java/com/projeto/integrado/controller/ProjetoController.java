@@ -1,6 +1,7 @@
 package com.projeto.integrado.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,18 @@ import com.projeto.integrado.service.ProjetoService;
 public class ProjetoController {
 	@Autowired
 	ProjetoService projetoService;
+	//---
+	public ResponseEntity<?> buscarPorDescricao(@PathVariable String descricao) {
+	    Optional<Projeto> projeto = projetoService.getByDescricao(descricao);
+        if (projeto.isPresent()) {
+            return ResponseEntity.ok(projeto.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+	}
+	
+	
+	//---
 	
 	@GetMapping
 	public ResponseEntity<List<Projeto>> getAll(){

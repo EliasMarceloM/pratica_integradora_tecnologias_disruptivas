@@ -1,8 +1,12 @@
 package com.projeto.integrado.service;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.projeto.integrado.entity.StatusTarefa;
 import com.projeto.integrado.entity.Tarefa;
 import com.projeto.integrado.repository.TarefaRepository;
 
@@ -10,6 +14,14 @@ import com.projeto.integrado.repository.TarefaRepository;
 public class TarefaService {
 	@Autowired
 	TarefaRepository tarefaRepository;
+	
+	//---
+	public Optional<Tarefa> getBystatusDaTarefa (StatusTarefa statusTarefa){
+		return tarefaRepository.findByStatusTarefa(statusTarefa); 
+	}
+	
+	//---
+	
 	
 	public List<Tarefa> getAll(){
 		return tarefaRepository.findAll();

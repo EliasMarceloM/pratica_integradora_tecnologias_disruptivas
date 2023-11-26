@@ -1,6 +1,7 @@
 package com.projeto.integrado.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.projeto.integrado.entity.StatusTarefa;
 import com.projeto.integrado.entity.Tarefa;
 import com.projeto.integrado.service.TarefaService;
 
@@ -22,6 +24,17 @@ import com.projeto.integrado.service.TarefaService;
 public class TarefaController {
 	@Autowired
 	TarefaService tarefaService;
+	
+	//---
+	 public ResponseEntity<?> statusDaTarefa(@PathVariable("statusTarefa") StatusTarefa statusTarefa) {
+	        Optional<Tarefa> tarefa = tarefaService.getBystatusDaTarefa(statusTarefa);
+	        if (tarefa.isPresent()) {
+	            return ResponseEntity.ok(tarefa.get());
+	        } else {
+	            return ResponseEntity.notFound().build();
+	        }
+	    }
+	//---
 	
 	@GetMapping
 	public ResponseEntity<List<Tarefa>> getAll(){

@@ -23,6 +23,10 @@ public class StatusTarefaController {
 	@Autowired
 	StatusTarefaService statusTarefaService;
 	
+	//---
+	
+	//---
+	
 	@GetMapping
 	public ResponseEntity<List<StatusTarefa>> getAll(){
 		List<StatusTarefa> statusTarefas = statusTarefaService.getAll();
